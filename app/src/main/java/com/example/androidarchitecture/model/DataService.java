@@ -2,8 +2,11 @@ package com.example.androidarchitecture.model;
 
 import com.example.androidarchitecture.network.GetData;
 
+import io.reactivex.Single;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import java.util.List;
 
 /**
  * 功能描述
@@ -18,5 +21,10 @@ public class DataService {
 
     public DataService(){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        api = retrofit.create(GetData.class);
+    }
+
+    public Single<List<Model>> getCountries(){
+        return api.getCountries();
     }
 }

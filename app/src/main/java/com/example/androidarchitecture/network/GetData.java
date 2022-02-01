@@ -17,5 +17,5 @@ import retrofit2.http.GET;
  */
 public interface GetData {
     @GET("all")
-    Single<List<Model>> widgetList();
+    Single<List<Model>> getCountries();
 }
