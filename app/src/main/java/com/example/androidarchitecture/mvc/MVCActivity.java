@@ -27,7 +27,6 @@ public class MVCActivity extends AppCompatActivity {
     private ArrayList<Model> list = new ArrayList<>();
     private CustomListViewAdapter adapter;
     private ListView listView;
-
     private MVCController mvcController;
 
     @Override
