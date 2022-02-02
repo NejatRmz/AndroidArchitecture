@@ -8,27 +8,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidarchitecture.R;
 import com.example.androidarchitecture.activities.MainActivity;
 import com.example.androidarchitecture.adapter.CustomListViewAdapter;
 import com.example.androidarchitecture.model.Model;
-import com.example.androidarchitecture.mvc.MVCActivity;
-import com.example.androidarchitecture.mvc.MVCController;
 import com.example.androidarchitecture.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MVPActivity extends AppCompatActivity implements MVPPresenter.View {
+public class MVPActivity extends AppCompatActivity implements CountriesPresenter.View {
 
     private ArrayList<Model> list = new ArrayList<>();
     private CustomListViewAdapter adapter;
     private ListView listView;
-    private MVPPresenter mvpPresenter;
-
+    private CountriesPresenter countriesPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +39,7 @@ public class MVPActivity extends AppCompatActivity implements MVPPresenter.View 
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         setTitle(message);
 
-        mvpPresenter = new MVPPresenter(this);
+        countriesPresenter = new CountriesPresenter(this);
         listView = findViewById(R.id.mvp);
         adapter = new CustomListViewAdapter(this, list);
 

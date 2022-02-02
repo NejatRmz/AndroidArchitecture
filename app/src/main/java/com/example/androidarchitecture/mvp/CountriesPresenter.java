@@ -1,16 +1,17 @@
-package com.example.androidarchitecture.mvc;
+package com.example.androidarchitecture.mvp;
 
 import android.util.Log;
-import android.view.View;
 
 import com.example.androidarchitecture.model.DataService;
 import com.example.androidarchitecture.model.Model;
+import com.example.androidarchitecture.mvc.MVCActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.util.List;
 
 /**
  * 功能描述
@@ -18,13 +19,13 @@ import java.util.List;
  * @author n84190005
  * @since 2022-02-02
  */
-public class MVCController {
-    private static final String TAG = "MVCCONTROLLER";
+public class CountriesPresenter {
+    private static final String TAG = "MVPCONTROLLER";
 
-    private MVCActivity view;
+    private View view;
     private DataService service;
 
-    public MVCController(MVCActivity view){
+    public CountriesPresenter(View view){
         this.view = view;
         service = new DataService();
         fetchData();
@@ -45,10 +46,14 @@ public class MVCController {
             @Override
             public void onFailure(Call<List<Model>> call, Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
+                view.onErrorMessage();
             }
 
         });
+    }
 
-
+    public interface View{
+        void setValues(List<Model> values);
+        void onErrorMessage();
     }
 }

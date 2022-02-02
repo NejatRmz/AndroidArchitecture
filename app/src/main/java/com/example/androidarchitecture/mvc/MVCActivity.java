@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidarchitecture.R;
 import com.example.androidarchitecture.activities.MainActivity;
 import com.example.androidarchitecture.adapter.CustomListViewAdapter;
 import com.example.androidarchitecture.model.Model;
-import com.example.androidarchitecture.mvvm.MVVMActivity;
 import com.example.androidarchitecture.utils.Constants;
 
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class MVCActivity extends AppCompatActivity {
     private ArrayList<Model> list = new ArrayList<>();
     private CustomListViewAdapter adapter;
     private ListView listView;
-    private MVCController mvcController;
+    private CountriesController countriesController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +62,7 @@ public class MVCActivity extends AppCompatActivity {
             Toast.makeText(this,"You are not online!!!!",Toast.LENGTH_SHORT).show();
             Log.v("Home", "############################You are not online!!!!");
         }
-        mvcController = new MVCController(this);
+        countriesController = new CountriesController(this);
     }
 
     public void setValues(List<Model> values){
