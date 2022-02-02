@@ -46,6 +46,7 @@ public class MVPPresenter {
             @Override
             public void onFailure(Call<List<Model>> call, Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
+                view.onErrorMessage();
             }
 
         });
@@ -53,5 +54,6 @@ public class MVPPresenter {
 
     public interface View{
         void setValues(List<Model> values);
+        void onErrorMessage();
     }
 }

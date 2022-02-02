@@ -75,4 +75,9 @@ public class MVPActivity extends AppCompatActivity implements MVPPresenter.View 
         list.addAll(values);
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onErrorMessage() {
+        Toast.makeText(this,"Error Occurred",Toast.LENGTH_SHORT).show();
+    }
 }
