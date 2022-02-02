@@ -31,8 +31,8 @@ public class MVCController {
     }
 
     private void fetchData() {
-        service.getCountries().
-            subscribeOn(Schedulers.newThread())
+        service.getCountries()
+            .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(new DisposableSingleObserver<List<Model>>() {
                 @Override
