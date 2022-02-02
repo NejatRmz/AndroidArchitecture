@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.androidarchitecture.R;
 import com.example.androidarchitecture.activities.MainActivity;
+import com.example.androidarchitecture.adapter.CustomListViewAdapter;
 import com.example.androidarchitecture.model.Model;
 import com.example.androidarchitecture.mvvm.MVVMActivity;
 import com.example.androidarchitecture.utils.Constants;
@@ -23,8 +24,8 @@ import java.util.List;
 
 public class MVCActivity extends AppCompatActivity {
 
-    private List<Model> list = new ArrayList<>();
-    private ArrayAdapter<Model> adapter;
+    private ArrayList<Model> list = new ArrayList<>();
+    private CustomListViewAdapter adapter;
     private ListView listView;
 
     private MVCController mvcController;
@@ -43,7 +44,7 @@ public class MVCActivity extends AppCompatActivity {
         setTitle(message);
 
         listView = findViewById(R.id.mvc);
-        adapter = new ArrayAdapter<>(this, R.layout.row_layout, R.id.listText, list);
+        adapter = new CustomListViewAdapter(this, list);
 
         listView.setAdapter(adapter);
 
