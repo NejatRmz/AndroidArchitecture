@@ -49,7 +49,6 @@ public class CountriesViewModel extends ViewModel {
             public void onResponse(Call<List<Model>> call, Response<List<Model>> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "Success");
-
                     countries.setValue(response.body());
                     countryErrors.setValue(false);
                 }

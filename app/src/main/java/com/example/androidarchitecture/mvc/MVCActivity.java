@@ -51,17 +51,6 @@ public class MVCActivity extends AppCompatActivity {
             }
         });
 
-        List<Model> countries = new ArrayList<>();
-
-        if (Constants.getInstance(this).isNetworkAvailable()) {
-
-            Toast.makeText(this,"You are online!!!!",Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(this,"You are not online!!!!",Toast.LENGTH_SHORT).show();
-            Log.v("Home", "############################You are not online!!!!");
-        }
         countriesController = new CountriesController(this);
     }
 

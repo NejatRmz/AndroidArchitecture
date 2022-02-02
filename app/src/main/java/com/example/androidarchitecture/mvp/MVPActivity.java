@@ -51,18 +51,6 @@ public class MVPActivity extends AppCompatActivity implements CountriesPresenter
                 Toast.makeText(MVPActivity.this, list.get(i) + " clicked.", Toast.LENGTH_SHORT).show();
             }
         });
-
-        List<Model> countries = new ArrayList<>();
-
-        if (Constants.getInstance(this).isNetworkAvailable()) {
-
-            Toast.makeText(this,"You are online!!!!",Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(this,"You are not online!!!!",Toast.LENGTH_SHORT).show();
-            Log.v("Home", "############################You are not online!!!!");
-        }
     }
 
     @Override

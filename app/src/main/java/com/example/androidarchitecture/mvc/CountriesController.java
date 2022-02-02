@@ -2,9 +2,11 @@ package com.example.androidarchitecture.mvc;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.androidarchitecture.model.DataService;
 import com.example.androidarchitecture.model.Model;
+import com.example.androidarchitecture.utils.Constants;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +29,12 @@ public class CountriesController {
     public CountriesController(MVCActivity view){
         this.view = view;
         service = new DataService();
-        fetchData();
+
+        if (Constants.getInstance(view).isNetworkAvailable()) {
+            fetchData();
+        } else {
+            Toast.makeText(view,"You are not online!!!!",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void fetchData() {
