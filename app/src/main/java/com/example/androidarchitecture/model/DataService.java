@@ -2,7 +2,7 @@ package com.example.androidarchitecture.model;
 
 import com.example.androidarchitecture.network.GetData;
 
-import io.reactivex.rxjava3.core.Single;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -24,7 +24,7 @@ public class DataService {
         api = retrofit.create(GetData.class);
     }
 
-    public Single<List<Model>> getCountries(){
+    public Call<List<Model>> getCountries(){
         return api.getCountries();
     }
 }

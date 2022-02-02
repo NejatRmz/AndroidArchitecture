@@ -1,13 +1,11 @@
 package com.example.androidarchitecture.network;
 
-import android.telecom.Call;
-
 import com.example.androidarchitecture.model.Model;
 
-import java.util.List;
-
-import io.reactivex.rxjava3.core.Single;
+import retrofit2.Call;
 import retrofit2.http.GET;
+
+import java.util.List;
 
 /**
  * 功能描述
@@ -17,5 +15,5 @@ import retrofit2.http.GET;
  */
 public interface GetData {
     @GET("all")
-    Single<List<Model>> getCountries();
+    Call<List<Model>> getCountries();
 }

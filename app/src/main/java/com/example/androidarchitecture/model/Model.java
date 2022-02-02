@@ -9,6 +9,8 @@ import com.google.gson.annotations.SerializedName;
  * @since 2022-02-01
  */
 public class Model {
-    @SerializedName("name")
+    @SerializedName("country")
     public String countryName;
+    @SerializedName("region")
+    public String region;
 }

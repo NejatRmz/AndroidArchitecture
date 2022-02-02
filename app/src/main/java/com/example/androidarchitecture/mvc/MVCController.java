@@ -6,9 +6,9 @@ import android.view.View;
 import com.example.androidarchitecture.model.DataService;
 import com.example.androidarchitecture.model.Model;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.observers.DisposableSingleObserver;
-import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.List;
 
@@ -31,21 +31,24 @@ public class MVCController {
     }
 
     private void fetchData() {
-        service.getCountries()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(new DisposableSingleObserver<List<Model>>() {
-                @Override
-                public void onSuccess(List<Model> value) {
-                    List<Model> countries = value;
-                    //view.setValues(countries);
-                    Log.e(TAG, countries.toString());
-                }
+        Call<List<Model>> call = service.getCountries();
+        call.enqueue(new Callback<List<Model>>() {
+            @Override
+            public void onResponse(Call<List<Model>> call, Response<List<Model>> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "Success");
 
-                @Override
-                public void onError(Throwable e) {
-                    Log.e(TAG, "Error Occurred");
+                    view.setValues(response.body());
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call<List<Model>> call, Throwable t) {
+                Log.e(TAG, "Failure: " + t.getMessage());
+            }
+
+        });
+
+
     }
 }
