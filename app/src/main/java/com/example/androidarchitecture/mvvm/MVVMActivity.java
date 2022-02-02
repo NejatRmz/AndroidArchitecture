@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.androidarchitecture.R;
 import com.example.androidarchitecture.activities.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MVVMActivity extends AppCompatActivity {
 
@@ -22,7 +28,7 @@ public class MVVMActivity extends AppCompatActivity {
     private void updateUI() {
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView textView = findViewById(R.id.mvvm);
-        textView.setText(message);
+        setTitle(message);
+
     }
 }

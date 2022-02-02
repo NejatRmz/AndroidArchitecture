@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".mvvm.MVVMActivity">
 
-    <TextView
+    <ListView
         android:id="@+id/mvvm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

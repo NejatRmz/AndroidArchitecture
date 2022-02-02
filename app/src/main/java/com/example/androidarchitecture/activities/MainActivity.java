@@ -16,10 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "arch_name";
 
-    private Button mvc;
-    private Button mvp;
-    private Button mvvm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        mvc = findViewById(R.id.mvc);
-        mvp = findViewById(R.id.mvp);
-        mvvm = findViewById(R.id.mvvm);
+        Button mvc = findViewById(R.id.mvc);
+        Button mvp = findViewById(R.id.mvp);
+        Button mvvm = findViewById(R.id.mvvm);
 
         mvc.setOnClickListener(buttonClickListener);
         mvp.setOnClickListener(buttonClickListener);
@@ -60,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     private void redirectToMVC() {
         Intent intent = new Intent(this, MVCActivity.class);
         intent.putExtra(EXTRA_MESSAGE, "MVC");
-
         startActivity(intent);
     }
 

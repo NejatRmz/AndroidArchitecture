@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.androidarchitecture.R;
@@ -22,7 +23,8 @@ public class MVPActivity extends AppCompatActivity {
     private void updateUI() {
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView textView = findViewById(R.id.mvp);
-        textView.setText(message);
+        ListView listView = findViewById(R.id.mvp);
+        setTitle(message);
+
     }
 }
