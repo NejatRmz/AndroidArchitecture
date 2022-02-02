@@ -2,7 +2,7 @@ package com.example.androidarchitecture.model;
 
 import com.example.androidarchitecture.network.GetData;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

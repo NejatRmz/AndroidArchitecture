@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,16 +14,20 @@ import android.widget.Toast;
 
 import com.example.androidarchitecture.R;
 import com.example.androidarchitecture.activities.MainActivity;
+import com.example.androidarchitecture.model.Model;
 import com.example.androidarchitecture.mvvm.MVVMActivity;
+import com.example.androidarchitecture.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MVCActivity extends AppCompatActivity {
 
-    private List<String> list = new ArrayList<>();
-    private ArrayAdapter<String> adapter;
+    private List<Model> list = new ArrayList<>();
+    private ArrayAdapter<Model> adapter;
     private ListView listView;
+
+    private MVCController mvcController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +54,36 @@ public class MVCActivity extends AppCompatActivity {
             }
         });
 
-        List<String> countries = new ArrayList<>();
-        countries.add("Turkey");
-        countries.add("Usa");
-        countries.add("Norway");
-        setValues(countries);
+        List<Model> countries = new ArrayList<>();
+
+        if (Constants.getInstance(this).isNetworkAvailable()) {
+
+            Toast.makeText(this,"You are online!!!!",Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            Toast.makeText(this,"You are not online!!!!",Toast.LENGTH_SHORT).show();
+            Log.v("Home", "############################You are not online!!!!");
+        }
+        mvcController = new MVCController(this);
     }
 
-    private void setValues(List<String> values){
+    public void setValues(List<Model> values){
         list.clear();
         list.addAll(values);
         adapter.notifyDataSetChanged();
+    }
+
+    private void addDataManual(ArrayList<Model> countries){
+        Model turkey = new Model();
+        turkey.countryName = "Turkey";
+        Model usa = new Model();
+        turkey.countryName = "USA";
+        Model norway = new Model();
+        turkey.countryName = "Norway";
+        countries.add(turkey);
+        countries.add(usa);
+        countries.add(norway);
+        setValues(countries);
     }
 }
